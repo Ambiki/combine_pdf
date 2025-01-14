@@ -1,5 +1,9 @@
 # Change Log
 
+#### Change log v.1.0.29.1 (2025-1-14)
+
+**Fix**: When handling malformed PDFs with incorrect length values, suppress a RangeError prior to skipping to the end of the stream.
+
 #### Change log v.1.0.29 (2024-12-07)
 
 **Fix**: frozen string literal support fix. Credit to @francescob (Francesco) for PR #245.

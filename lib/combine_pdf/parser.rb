@@ -363,7 +363,11 @@ module CombinePDF
           # advance by the publshed stream length (if any)
           old_pos = @scanner.pos
           if(out.last.is_a?(Hash) && out.last[:Length].is_a?(Integer) && out.last[:Length] > 2)
-            @scanner.pos += out.last[:Length] - 2
+            begin
+              @scanner.pos += out.last[:Length] - 2
+            rescue RangeError
+              # Currently the scanner is just going to skip until the endstream anyway so this is safe to ignore.
+            end
           end
 
           # the following was dicarded because some PDF files didn't have an EOL marker as required
